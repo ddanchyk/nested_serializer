@@ -46,13 +46,13 @@ We can use `PrimaryKeyModelSerializer` to create nested serializers for these mo
 ```python
 from rest_framework import serializers
 
-# Define a nested serializer for the SocialNetwork model
+# Define a nested serializer for the Article model
 class NestedArticleSerializer(PrimaryKeyModelSerializer):
     class Meta:
         model = Article
         fields = ('id', 'title')
 
-# Define a serializer for the ClientSocialNetwork model using the nested serializer
+# Define a serializer for the Site model using the nested serializer
 class SiteSerializer(serializers.ModelSerializer):
     article = NestedArticleSerializer(queryset=Article.objects.all())
     
